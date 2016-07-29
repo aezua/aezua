@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<h4 class="site-description">{{ site.description }}</h4>
+
+{% for post in paginator.posts %}
+<article class="preview" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+  <div class="article-item">
+    <header class="post-header">
+      <h2 class="post-title" itemprop="name">
+        <a href="{{ site.baseurl }}{{ post.url }}" itemprop="url">{{ post.title }}</a>
+      </h2>
+      <div class="post-meta">
+        <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time>
+      </div>
+    </header>
+    <section class="post-excerpt" itemprop="description">
+      <p>{{ post.excerpt | strip_html | truncate_words 150 }}</p>
+    </section>
+  </div>
+</article>
+{% endfor %}
+
+<nav class="pagination" role="navigation">
+  {% if paginator.previous_page %}
+  {% if paginator.page == 2 %}
+  <a class="newer-posts" href="/">Newer Posts</a>
+  {% else %}
+  <a class="newer-posts" href="/page{{ paginator.previous_page }}">Newer Posts</a>
+  {% endif %}
+  {% endif %}
+  {% if paginator.total_pages > 1 %}
+  <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% endif %}
+  {% if paginator.next_page %}
+  <a class="older-posts" href="/page{{ paginator.next_page }}">Older posts</a>
+  {% endif %}
+</nav>

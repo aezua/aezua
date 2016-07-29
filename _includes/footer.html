@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="footer-col footer-col-1">
+    <p class="contact-mailto">
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </p>
+    {% if site.github_username %}
+    <p class="contact-github">
+    {% include icon-github.html username=site.github_username %}
+    </p>
+    {% endif %}
+    </ul>
+  </div>
+
+  <div class="footer-col footer-col-2">
+    <p class="rss-subscribe">
+      <a href="{{ site.baseurl }}/feed.xml">
+        <span class="tooltip"> <i class="fa fa-rss"></i>
+          Subscribe via RSS!
+         </span>
+      </a>
+    </p>
+
+    <p class="copyright">
+      All content &copy; <a href="mailto:{{ site.email }}">{{ site.name }}</a>
+      {{ site.time | date: '%Y' }} 
+    </p>
+
+    <p>
+      All rights reserved.
+    </p>
+  </div>
+
+  <div class="site-description">
+    <p>{{ site.description }}</p>
+  </div>
+</footer>
